@@ -36,7 +36,7 @@
   margin: 0;
 }
 
-/* .d3-tip {
+/* .tooltip {
   padding: 6px;
   font-size: 12px;
   line-height: 1;
@@ -45,7 +45,7 @@
   text-align: center;
   text-transform: capitalize;
   background: rgba(0, 0, 0, 0.8);
-  background-color: red; 
+  background-color: gray; 
   border-radius: 4px;
 } */
 
@@ -55,10 +55,11 @@
   height: 60px;
   padding: 2px;
   padding-top: 8px;
-  font: 12px sans-serif;
+  font: 12px sans-serif !important;
   color: white !important;
-  text-align: center;
-  background: black;
+  text-align: center!important;
+  background: rgba(0, 0, 0, 0.8);
+  background-color:gray;
   opacity: 0.5;
   border: 0;
   border-radius: 10px;

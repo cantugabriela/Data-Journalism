@@ -29,7 +29,7 @@ var chartGroup = svg.append("g")
 
 // Import Data
 //var file = "https://raw.githubusercontent.com/the-Coding-Boot-Camp-at-UT/UTAUS201807DATA2/master/homework-instructions/16-D3/Instructions/data/data.csv?token=AlrQ1AsqqfeBIqdGwDr3Q8EXWIADFBmmks5b40y2wA%3D%3D"
-var file = "data.csv"
+var file = "assets/data/data.csv"
 
 // Function is called and passes csv data
 d3.csv(file).then(successHandle, errorHandle);
@@ -66,6 +66,9 @@ function successHandle(statesData) {
     .ticks(7);
   var leftAxis = d3.axisLeft(yLinearScale);
 
+
+
+
   // Append the axes to the chart group 
   // Bottom axis moves using height 
   chartGroup.append("g")
@@ -76,6 +79,7 @@ function successHandle(statesData) {
   chartGroup.append("g")
     .call(leftAxis);
 
+
   // Create Circles for scatter plot
   var circlesGroup = chartGroup.selectAll("circle")
     .data(statesData)
@@ -83,19 +87,20 @@ function successHandle(statesData) {
     .append("circle")
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.obesity))
-    .attr("r", "15")
-    .attr("fill", "#8ebfd1")
+    .attr("r", "13")
+    .attr("fill", "#788dc2")
     .attr("opacity", ".75")
+
 
   // Append text to circles 
 
-  chartGroup.selectAll()
+  var circlesGroup = chartGroup.selectAll()
     .data(statesData)
     .enter()
     .append("text")
     .attr("x", d => xLinearScale(d.poverty))
     .attr("y", d => yLinearScale(d.obesity))
-    .style("font-size", "12px")
+    .style("font-size", "13px")
     .style("text-anchor", "middle")
     .style('fill', 'white')
     .text(d => (d.abbr));
@@ -106,7 +111,7 @@ function successHandle(statesData) {
     .attr("class", "tooltip")
     .offset([80, -60])
     .html(function (d) {
-      return (`${d.state}<br>Poverty: ${d.poverty}%<br>Obesity: ${d.obesity}%`);
+      return (`${d.state}<br>Poverty: ${d.poverty}%<br>Obesity: ${d.obesity}% `);
     });
 
   // Step 7: Create tooltip in the chart
@@ -116,8 +121,7 @@ function successHandle(statesData) {
   // Step 8: Create event listeners to display and hide the tooltip
   // ==============================
   circlesGroup.on("mouseover", function (data) {
-    toolTip.show(data, this)
-      .style("color", "black");
+    toolTip.show(data, this);
   })
     // onmouseout event
     .on("mouseout", function (data) {
@@ -138,4 +142,5 @@ function successHandle(statesData) {
     .attr("class", "axisText")
     .text("In Poverty (%)");
 }
+
 
