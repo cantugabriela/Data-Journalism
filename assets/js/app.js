@@ -29,7 +29,7 @@ var chartGroup = svg.append("g")
 
 // Import Data
 //var file = "https://raw.githubusercontent.com/the-Coding-Boot-Camp-at-UT/UTAUS201807DATA2/master/homework-instructions/16-D3/Instructions/data/data.csv?token=AlrQ1AsqqfeBIqdGwDr3Q8EXWIADFBmmks5b40y2wA%3D%3D"
-var file = "data.csv"
+var file = "data/data.csv"
 
 // Function is called and passes csv data
 d3.csv(file).then(successHandle, errorHandle);
